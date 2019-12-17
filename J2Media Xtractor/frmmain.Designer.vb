@@ -19,49 +19,50 @@ Partial Class frmmain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.mnumain = New System.Windows.Forms.MenuStrip
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.openfiledlg = New System.Windows.Forms.OpenFileDialog
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.lblperm = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.lbldesc = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.lbldatasize = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.picappicon = New System.Windows.Forms.PictureBox
-        Me.lblprofile = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.lblconfig = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.lblcreatedby = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.lblvendor = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.lblappver = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.lblappname = New System.Windows.Forms.Label
-        Me.folderbrowser = New System.Windows.Forms.FolderBrowserDialog
-        Me.btnseldir = New System.Windows.Forms.Button
-        Me.lbldumpdir = New System.Windows.Forms.Label
-        Me.btnsimple = New System.Windows.Forms.Button
-        Me.lstsimple = New System.Windows.Forms.ListBox
-        Me.lsthardcore = New System.Windows.Forms.ListBox
-        Me.btnhardcore = New System.Windows.Forms.Button
-        Me.prgsimple = New System.Windows.Forms.ProgressBar
-        Me.prghardcore = New System.Windows.Forms.ProgressBar
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.chkpng = New System.Windows.Forms.CheckBox
-        Me.chkmidi = New System.Windows.Forms.CheckBox
-        Me.chkwav = New System.Windows.Forms.CheckBox
+        Me.mnumain = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.openfiledlg = New System.Windows.Forms.OpenFileDialog()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblperm = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lbldesc = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lbldatasize = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.picappicon = New System.Windows.Forms.PictureBox()
+        Me.lblprofile = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblconfig = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblcreatedby = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblvendor = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblappver = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblappname = New System.Windows.Forms.Label()
+        Me.folderbrowser = New System.Windows.Forms.FolderBrowserDialog()
+        Me.btnseldir = New System.Windows.Forms.Button()
+        Me.lbldumpdir = New System.Windows.Forms.Label()
+        Me.btnsimple = New System.Windows.Forms.Button()
+        Me.lstsimple = New System.Windows.Forms.ListBox()
+        Me.lsthardcore = New System.Windows.Forms.ListBox()
+        Me.btnhardcore = New System.Windows.Forms.Button()
+        Me.prgsimple = New System.Windows.Forms.ProgressBar()
+        Me.prghardcore = New System.Windows.Forms.ProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.chkpng = New System.Windows.Forms.CheckBox()
+        Me.chkmidi = New System.Windows.Forms.CheckBox()
+        Me.chkwav = New System.Windows.Forms.CheckBox()
+        Me.btnExtractAll = New System.Windows.Forms.Button()
         Me.mnumain.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.picappicon, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,43 +81,43 @@ Partial Class frmmain
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ResetToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.OpenToolStripMenuItem.Text = "Open Java Game/App"
         '
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(176, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(186, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'openfiledlg
@@ -425,12 +426,22 @@ Partial Class frmmain
         Me.chkwav.Text = "WAV"
         Me.chkwav.UseVisualStyleBackColor = True
         '
+        'btnExtractAll
+        '
+        Me.btnExtractAll.Location = New System.Drawing.Point(515, 332)
+        Me.btnExtractAll.Name = "btnExtractAll"
+        Me.btnExtractAll.Size = New System.Drawing.Size(307, 52)
+        Me.btnExtractAll.TabIndex = 0
+        Me.btnExtractAll.Text = "Extract ALL Resources (Replaces Simple + Hardcore Extract)"
+        Me.btnExtractAll.UseVisualStyleBackColor = True
+        '
         'frmmain
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(834, 415)
+        Me.Controls.Add(Me.btnExtractAll)
         Me.Controls.Add(Me.chkwav)
         Me.Controls.Add(Me.chkmidi)
         Me.Controls.Add(Me.chkpng)
@@ -502,5 +513,5 @@ Partial Class frmmain
     Friend WithEvents chkpng As System.Windows.Forms.CheckBox
     Friend WithEvents chkmidi As System.Windows.Forms.CheckBox
     Friend WithEvents chkwav As System.Windows.Forms.CheckBox
-
+    Friend WithEvents btnExtractAll As Button
 End Class

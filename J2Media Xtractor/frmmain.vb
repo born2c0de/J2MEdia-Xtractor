@@ -427,5 +427,113 @@ Public Class frmmain
         MsgBox("Hey")
     End Function
 
+    Public Function BEInt32(f As System.IO.BinaryReader) As UInt32
+        Dim data = f.ReadBytes(4)
+        Array.Reverse(data)
+        Return BitConverter.ToUInt32(data, 0)
+    End Function
 
+    Public Function BEInt64(f As System.IO.BinaryReader) As UInt64
+        Dim data = f.ReadBytes(8)
+        Array.Reverse(data)
+        Return BitConverter.ToUInt64(data, 0)
+    End Function
+
+    Public Function BEInt16(f As System.IO.BinaryReader) As UInt16
+        Dim data = f.ReadBytes(2)
+        Array.Reverse(data)
+        Return BitConverter.ToUInt16(data, 0)
+    End Function
+
+
+
+    Private Function ExtractPAKFile(ByVal filepath As String, ByVal dumpdir As String) As Integer
+        Dim filefs As System.IO.FileStream
+        Dim mediafs As System.IO.FileStream
+        Dim br As System.IO.BinaryReader
+        Dim bw As System.IO.BinaryWriter
+        Dim fpos As Long
+        'Dim shiftpos As Long
+        Dim tmpbytes() As Byte = Nothing
+        Dim tmpstr As String
+        Dim mediafilename As String
+        Dim count As Integer = 0
+        Dim sigmidi() As String = {"4D546864", "00FF2F00"}
+        ' PAK file format appears to be:
+        ' 08 bytes: {8 byte checksum}
+        ' 02 bytes: Size of embedded file
+        ' 
+        Dim embedFiles As Dictionary(Of UInt32, UInt16) = New Dictionary(Of UInteger, UShort)
+        Dim fPak As System.IO.BinaryReader
+        fPak = New System.IO.BinaryReader(System.IO.File.Open(filepath, IO.FileMode.Open))
+        Dim fSize = fPak.BaseStream.Length
+        Dim pos = 0
+
+        ' First 6 bytes appear to be a checksum
+        Dim totalElements = BEInt16(fPak)
+        pos += 2
+        Dim checksum = BEInt32(fPak)
+        pos += 4
+        Dim embed_location = BEInt32(fPak)
+        pos += 4
+        Dim embed_size = BEInt32(fPak)
+        pos += 4
+
+        fSize = embed_location
+        embedFiles.Add(embed_location, embed_size)
+        While pos < fSize
+            checksum = BEInt32(fPak)
+            pos += 4
+            embed_location = BEInt32(fPak)
+            pos += 4
+            embed_size = BEInt32(fPak)
+            pos += 4
+            Try
+                Debug.WriteLine(Hex(fPak.BaseStream.Position) + ": " + Hex(embed_location) + "-->" + Hex(embed_size))
+                embedFiles.Add(embed_location, embed_size)
+            Catch e As Exception
+                Exit While
+            End Try
+
+        End While
+        Dim counter As Integer
+        For Each kvp As KeyValuePair(Of UInt32, UInt16) In embedFiles
+            fPak.BaseStream.Seek(kvp.Key, IO.SeekOrigin.Begin)
+            Dim embedData = fPak.ReadBytes(kvp.Value)
+            System.IO.File.WriteAllBytes(System.IO.Path.Combine(dumpdir, kvp.Key.ToString()), embedData)
+            counter += 1
+        Next
+        Return counter
+
+    End Function
+
+    Private Sub btnExtractAll_Click(sender As Object, e As EventArgs) Handles btnExtractAll.Click
+        Dim currentFileInZip As ZipEntry
+        Dim count As Integer = 0
+        Dim strtotalfiles As String = ""
+
+        If String.IsNullOrEmpty(lbldumpdir.Text) = True Then
+            MessageBox.Show("Select a Dump Directory", "Cannot Extract Files", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End If
+        For Each x As String In lsthardcore.Items
+            currentFileInZip = zip.Item(Trim(x))
+            If currentFileInZip.FileName.EndsWith(".pak") Then
+                If Not IO.File.Exists(IO.Path.Combine(lbldumpdir.Text, currentFileInZip.FileName)) Then currentFileInZip.Extract(lbldumpdir.Text)
+                strtotalfiles &= x & " = " & ExtractPAKFile(System.IO.Path.Combine(lbldumpdir.Text, Trim(x)), lbldumpdir.Text).ToString() & " Embedded Files" + vbNewLine
+
+
+
+            End If
+            'Prevents File Already Present Exception + Increases Speed as file is not copied again.
+
+
+
+            count = count + 1
+
+            prghardcore.Value = (count * 100) / lsthardcore.Items.Count
+        Next
+        MessageBox.Show(strtotalfiles, "Hardcore Extract Performed on " & lsthardcore.Items.Count.ToString & " Files.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        prghardcore.Value = 0
+    End Sub
 End Class
